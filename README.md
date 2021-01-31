@@ -9,15 +9,6 @@ Before getting started, make sure you've the latest version of following:
 - redis
 - mongodb
 
-To get started just clone the repository and install the dependencies.
-This vanilla-express includes:
-- Joi (Request Validation)
-- redis (Caching APIS)
-- mongoose (ORM MongoDB)
-- bluebird (promisigying redis operations)
-- express-status-monitor (monitoring server)
-- morgan (logging)
-
 ## Manual Installation
 
 ```bash
@@ -103,7 +94,7 @@ The app has a centralized error handling mechanism.
 Controllers should try to catch the errors and forward them to the error handling middleware (by calling `next(error)`). For convenience, you can also wrap the controller inside the catchAsync utility wrapper, which forwards the error.
 
 ```javascript
-# Custom Not Found Error
+// Custom Not Found Error
 class NotFoundError extends Error {
   constructor(message = 'Not Found') {
     super();
@@ -114,7 +105,7 @@ class NotFoundError extends Error {
 
 module.exports = NotFoundError;
 
-# Picks up the status codes and messages automatically
+// Picks up the status codes and messages automatically
 const resource = await this.model.findById(req.params.id)
       .orFail(new NotFoundError());
 ```
